@@ -88,15 +88,15 @@
         <div class="hero-features">
           <div class="hero-feature-item">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span>Strict JSON-Driven Architecture</span>
+            <span>PHP RESTful Data Service (api.php)</span>
           </div>
           <div class="hero-feature-item">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span>Pure Vanilla JavaScript</span>
+            <span>JSON Schema (Draft 2020-12) Validated</span>
           </div>
           <div class="hero-feature-item">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span>GitHub Pages Deployment Ready</span>
+            <span>Vanilla JS Client-Side Rendering</span>
           </div>
         </div>
       </div>
@@ -318,37 +318,40 @@
       <div class="container">
         <div class="about-grid">
           <div class="about-content">
-            <span class="section-tag">Architecture & Objective</span>
-            <h2>Decoupled Data Architecture for Academic Transparency</h2>
+            <span class="section-tag">Assignment 2 • RESTful Architecture</span>
+            <h2>PHP RESTful Data Service & Decoupled Frontend</h2>
             <p>
-              The <strong>GEC Wayanad Project Showcase Portal</strong> is built to demonstrate modern frontend engineering principles. Developed as an academic assignment, it emphasizes strict architectural decoupling between data storage and presentation.
+              The <strong>GEC Wayanad Project Showcase Portal</strong> has been enhanced to implement a full-stack RESTful data delivery pipeline in compliance with Assignment 2 specifications.
             </p>
             <p>
-              All project records, student team relations, faculty advisors, and technology classifications reside in a standalone, validated JSON dataset (<code>data/projectdata.json</code>). The client application loads, indexes, filters, and renders the UI in real time using native ES6+ JavaScript without reliance on heavy runtime frameworks.
+              All institutional project records reside in an independent JSON dataset (<code>data/projectdata.json</code>) structured as an RO-Crate-aligned graph, formally validated using JSON Schema Draft 2020-12 (<code>schemas/projectdata.schema.json</code>).
             </p>
             <p>
-              This lightweight approach guarantees instantaneous performance, offline functionality, zero vulnerability surface from external dependencies, and complete portability for hosting on static infrastructures like GitHub Pages.
+              A specialized vanilla PHP endpoint (<code>api.php</code>) serves this data over HTTP using standard REST principles: validating request methods, verifying file permissions, ensuring JSON syntax integrity, setting <code>Content-Type: application/json; charset=utf-8</code>, and returning clean HTTP status codes (200, 404, 405, 500) without rendering any server-side HTML.
+            </p>
+            <p>
+              On the client side, the native Fetch API requests <code>./api.php</code>, handles loading and error states with an interactive retry mechanism, and performs client-side search, filtering, and modal rendering entirely in memory.
             </p>
           </div>
 
           <div class="about-highlight-box">
-            <h3>Technical Architecture Highlights</h3>
+            <h3>RESTful Architecture Highlights</h3>
             <ul class="about-specs-list">
               <li class="about-specs-item">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span><strong>No Framework Bloat:</strong> Zero external JS dependencies; pure standard HTML5, CSS3, and modern Vanilla JavaScript.</span>
+                <span><strong>Linear Data Flow:</strong> <code>projectdata.json</code> → <code>api.php</code> → HTTP JSON Response → JavaScript Fetch API → Dynamic DOM.</span>
               </li>
               <li class="about-specs-item">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span><strong>Strict Separation of Concerns:</strong> 100% of project card elements are dynamically created via DOM manipulation from JSON graph objects.</span>
+                <span><strong>Pure Vanilla PHP Endpoint:</strong> Zero PHP frameworks or Composer dependencies. Strict GET validation, clean error objects, and no HTML output.</span>
               </li>
               <li class="about-specs-item">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span><strong>Interactive Filtering:</strong> Multi-criterion search matching against title, description, domain, department, technologies, and mentor IDs.</span>
+                <span><strong>Formal Schema Validation:</strong> Governed by JSON Schema Draft 2020-12 with conditional entity evaluation for Project records.</span>
               </li>
               <li class="about-specs-item">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span><strong>Accessibility & Responsiveness:</strong> Mobile-first semantic layout with ARIA landmarks, dialog focus trapping, and keyboard controls.</span>
+                <span><strong>Resilient UX States:</strong> Dedicated visual loading indicators, network failure alerts with instant retry, and client-side empty state handlers.</span>
               </li>
             </ul>
           </div>
@@ -510,10 +513,10 @@
         <div class="footer-col">
           <h5>Data Architecture</h5>
           <ul>
-            <li><a href="data/projectdata.json" target="_blank" rel="noopener noreferrer">View Raw JSON Graph</a></li>
-            <li><a href="#about">Vanilla JS Engine</a></li>
-            <li><a href="#about">Decoupled Architecture</a></li>
-            <li><a href="#projects">Dynamic Rendering</a></li>
+            <li><a href="./api.php" target="_blank" rel="noopener noreferrer">PHP REST Endpoint (api.php)</a></li>
+            <li><a href="schemas/projectdata.schema.json" target="_blank" rel="noopener noreferrer">JSON Schema (Draft 2020-12)</a></li>
+            <li><a href="data/projectdata.json" target="_blank" rel="noopener noreferrer">Raw JSON Graph Dataset</a></li>
+            <li><a href="#about">RESTful Architecture</a></li>
           </ul>
         </div>
       </div>

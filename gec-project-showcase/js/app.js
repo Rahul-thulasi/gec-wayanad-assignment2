@@ -1,6 +1,7 @@
 /**
  * ============================================================================
  * GEC Wayanad — Data-Driven Project Showcase Portal
+ * Assignment 2: PHP RESTful Data Service Integration
  * Script: js/app.js
  * Vanilla JavaScript (ES6+) Application Controller
  * ============================================================================
@@ -8,6 +9,9 @@
 
 (function () {
   'use strict';
+
+  // RESTful Data Service Endpoint
+  const API_ENDPOINT = './api.php';
 
   // Application State
   const state = {
@@ -22,143 +26,9 @@
       tech: 'all',
       sort: 'year-desc'
     },
-    currentView: 'grid' // 'grid' | 'list'
-  };
-
-  // Fallback dataset for file:// protocol environments where fetch() is blocked by browser CORS
-  const FALLBACK_DATASET = {
-    "graph": [
-      {
-        "id": "project-001",
-        "type": "Project",
-        "title": "Wayanad Landslide Monitoring System",
-        "domain": "Disaster Management",
-        "description": "A system for monitoring environmental parameters to support early identification of landslide-prone conditions.",
-        "year": 2026,
-        "department": "Computer Science and Engineering",
-        "team": ["student-001", "student-002", "student-003"],
-        "guide": "faculty-001",
-        "technologies": ["IoT", "Python", "Machine Learning"],
-        "status": "Prototype"
-      },
-      {
-        "id": "project-002",
-        "type": "Project",
-        "title": "Campus Resource Booking System",
-        "domain": "Web Application",
-        "description": "A web application for booking classrooms, laboratories and other institutional resources.",
-        "year": 2026,
-        "department": "Computer Science and Engineering",
-        "team": ["student-004", "student-005"],
-        "guide": "faculty-002",
-        "technologies": ["HTML", "CSS", "JavaScript", "PHP"],
-        "status": "Development"
-      },
-      {
-        "id": "project-003",
-        "type": "Project",
-        "title": "Smart Agro-Climatic Sensor Network for Wayanad Coffee Plantations",
-        "domain": "Agriculture & IoT",
-        "description": "Demonstration record: Low-power mesh sensor deployment for microclimate tracking, soil moisture profiling, and frost alerts tailored for high-altitude hill agriculture.",
-        "year": 2026,
-        "department": "Electronics and Communication Engineering",
-        "team": ["student-006", "student-007", "student-008"],
-        "guide": "faculty-003",
-        "technologies": ["LoRaWAN", "Embedded C", "ESP32", "MQTT"],
-        "status": "Prototype"
-      },
-      {
-        "id": "project-004",
-        "type": "Project",
-        "title": "Kabini River Basin Water Level Early Warning Alert System",
-        "domain": "Disaster Management",
-        "description": "Demonstration record: Ultrasonic depth telemetry combined with predictive hydrological runoff models to warn downstream riverbank communities during peak monsoon.",
-        "year": 2025,
-        "department": "Civil Engineering",
-        "team": ["student-009", "student-010"],
-        "guide": "faculty-004",
-        "technologies": ["Python", "Telemetry", "GIS Mapping", "GSM Module"],
-        "status": "Completed"
-      },
-      {
-        "id": "project-005",
-        "type": "Project",
-        "title": "Malayalam Dialect Speech Recognition for Tribal Health Access",
-        "domain": "Artificial Intelligence",
-        "description": "Demonstration record: Acoustic fine-tuning of automated speech recognition models to transcribe local regional dialects for primary healthcare assistance.",
-        "year": 2026,
-        "department": "Computer Science and Engineering",
-        "team": ["student-011", "student-012", "student-013"],
-        "guide": "faculty-001",
-        "technologies": ["PyTorch", "Transformers", "Audio Processing", "Flask"],
-        "status": "Development"
-      },
-      {
-        "id": "project-006",
-        "type": "Project",
-        "title": "Hybrid Solar-Micro-Hydro Campus Energy Management System",
-        "domain": "Renewable Energy",
-        "description": "Demonstration record: Supervisory SCADA controller balancing collegiate rooftop photovoltaic generation and backup storage units with dynamic load shedding.",
-        "year": 2025,
-        "department": "Electrical and Electronics Engineering",
-        "team": ["student-014", "student-015"],
-        "guide": "faculty-005",
-        "technologies": ["MATLAB/Simulink", "SCADA", "Power Electronics", "Modbus"],
-        "status": "Completed"
-      },
-      {
-        "id": "project-007",
-        "type": "Project",
-        "title": "GECW Digital Central Repository & E-Thesis Archive",
-        "domain": "Web Application",
-        "description": "Demonstration record: Open-access academic publication and capstone repository facilitating peer review, plagiarism verification, and institutional indexing.",
-        "year": 2025,
-        "department": "Computer Science and Engineering",
-        "team": ["student-016", "student-017", "student-018"],
-        "guide": "faculty-002",
-        "technologies": ["JavaScript", "Node.js", "IndexedDB", "REST API"],
-        "status": "Completed"
-      },
-      {
-        "id": "project-008",
-        "type": "Project",
-        "title": "Autonomous Forest Trail Inspection Rover for Wildlife Corridors",
-        "domain": "Robotics & Vision",
-        "description": "Demonstration record: Ruggedized tracked chassis navigating rugged terrain with edge computer vision to detect fence breaches and human-wildlife encounters.",
-        "year": 2026,
-        "department": "Mechanical Engineering",
-        "team": ["student-019", "student-020", "student-021"],
-        "guide": "faculty-006",
-        "technologies": ["ROS2", "OpenCV", "Jetson Nano", "SolidWorks"],
-        "status": "Prototype"
-      },
-      {
-        "id": "project-009",
-        "type": "Project",
-        "title": "Federated Hospital Record Exchange for District Clinics",
-        "domain": "Information Security",
-        "description": "Demonstration record: Privacy-preserving cryptographically verified ledger mechanism permitting tamper-evident transfer of patient health summaries.",
-        "year": 2024,
-        "department": "Computer Science and Engineering",
-        "team": ["student-022", "student-023"],
-        "guide": "faculty-007",
-        "technologies": ["Cryptography", "Go", "Docker", "WebSockets"],
-        "status": "Completed"
-      },
-      {
-        "id": "project-010",
-        "type": "Project",
-        "title": "Smart Rainwater Harvesting & Greywater Recycling Controller",
-        "domain": "Renewable Energy",
-        "description": "Demonstration record: Automated pneumatic multi-stage filtration monitor regulating campus hostel auxiliary water supplies based on meteorological forecast data.",
-        "year": 2024,
-        "department": "Civil Engineering",
-        "team": ["student-024", "student-025"],
-        "guide": "faculty-004",
-        "technologies": ["Arduino", "Fluid Dynamics", "Turbidity Sensors"],
-        "status": "Completed"
-      }
-    ]
+    currentView: 'grid', // 'grid' | 'list'
+    isLoading: false,
+    hasError: false
   };
 
   // DOM Elements
@@ -214,40 +84,193 @@
   /**
    * Initialize Application
    */
-  async function init() {
+  function init() {
     setupEventListeners();
-    await loadProjectData();
-    populateFilterDropdowns();
-    updateStatistics();
-    applyFilters();
+    fetchProjectData();
   }
 
   /**
-   * Load JSON Project Data
-   * First attempts asynchronous fetch from 'data/projectdata.json'.
-   * Falls back smoothly if running locally via file:// where fetch is restricted by browser security.
+   * Render Loading State
+   * Displays an animated spinner and status message while requesting api.php
    */
-  async function loadProjectData() {
-    try {
-      const response = await fetch('data/projectdata.json');
-      if (!response.ok) {
-        throw new Error(`HTTP error status: ${response.status}`);
-      }
-      const jsonData = await response.json();
-      if (!jsonData.graph || !Array.isArray(jsonData.graph)) {
-        throw new Error('Invalid JSON format: graph array missing');
-      }
-      state.allProjects = jsonData.graph;
-      console.info('GEC Wayanad Portal: Project data successfully loaded from data/projectdata.json.');
-    } catch (err) {
-      console.warn('GEC Wayanad Portal: Remote fetch failed, activating resilient local fallback dataset.', err.message);
-      state.allProjects = FALLBACK_DATASET.graph;
-      showToastNotice('Project data loaded from local dataset.');
+  function renderLoadingState() {
+    state.isLoading = true;
+    state.hasError = false;
+    toggleFilterControls(false);
+
+    DOM.resultsCount.textContent = '...';
+    DOM.totalCount.textContent = '...';
+
+    DOM.projectGrid.innerHTML = `
+      <div class="loading-state" role="status" aria-live="polite">
+        <div class="spinner" aria-hidden="true"></div>
+        <p class="loading-title">Connecting to Institutional Data Service</p>
+        <p class="loading-subtitle">Requesting <code>${escapeHtml(API_ENDPOINT)}</code> over HTTP...</p>
+      </div>
+    `;
+  }
+
+  /**
+   * Render Error State
+   * Displays clear feedback when the PHP endpoint fails, with a working Retry button
+   */
+  function renderErrorState(errorMessage) {
+    state.isLoading = false;
+    state.hasError = true;
+    toggleFilterControls(false);
+
+    DOM.resultsCount.textContent = '0';
+    DOM.totalCount.textContent = '0';
+    DOM.statTotalProjects.textContent = '0';
+    DOM.statDomains.textContent = '0';
+    DOM.statCompleted.textContent = '0';
+    DOM.statActive.textContent = '0';
+
+    DOM.projectGrid.innerHTML = `
+      <div class="error-state" role="alert" aria-live="assertive">
+        <div class="error-state-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+        </div>
+        <h3 class="error-state-title">Unable to Load Project Records</h3>
+        <p class="error-state-desc">
+          The browser encountered an error communicating with the PHP RESTful endpoint (<code>${escapeHtml(API_ENDPOINT)}</code>). 
+          Please verify that the PHP development server is running and the data file is accessible.
+        </p>
+        <div class="error-details-box">${escapeHtml(errorMessage)}</div>
+        <button type="button" class="btn btn-retry" id="retryFetchBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <polyline points="1 20 1 14 7 14"></polyline>
+            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+          </svg>
+          Retry Request
+        </button>
+      </div>
+    `;
+
+    const retryBtn = document.getElementById('retryFetchBtn');
+    if (retryBtn) {
+      retryBtn.addEventListener('click', () => {
+        fetchProjectData();
+      });
     }
   }
 
   /**
-   * Populate Filter Dropdowns dynamically based on JSON dataset values
+   * Render Server Empty State
+   * Displayed when the server returns a valid graph array containing 0 project records
+   */
+  function renderServerEmptyState() {
+    state.isLoading = false;
+    toggleFilterControls(false);
+
+    DOM.projectGrid.innerHTML = `
+      <div class="empty-state" role="status">
+        <div class="empty-state-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          </svg>
+        </div>
+        <h3 class="empty-state-title">No Project Records Available</h3>
+        <p class="empty-state-desc">The institutional repository currently contains no active project entries.</p>
+        <button type="button" class="btn btn-primary" id="serverEmptyRefreshBtn">
+          Refresh From Server
+        </button>
+      </div>
+    `;
+
+    const refreshBtn = document.getElementById('serverEmptyRefreshBtn');
+    if (refreshBtn) {
+      refreshBtn.addEventListener('click', fetchProjectData);
+    }
+  }
+
+  /**
+   * Enable or disable search & filter inputs based on loading state
+   */
+  function toggleFilterControls(enabled) {
+    DOM.searchInput.disabled = !enabled;
+    DOM.domainFilter.disabled = !enabled;
+    DOM.departmentFilter.disabled = !enabled;
+    DOM.yearFilter.disabled = !enabled;
+    DOM.statusFilter.disabled = !enabled;
+    DOM.sortSelect.disabled = !enabled;
+    DOM.resetFiltersBtn.disabled = !enabled;
+  }
+
+  /**
+   * Fetch Data from the PHP RESTful Endpoint (api.php)
+   * All project information originates from the HTTP response.
+   */
+  async function fetchProjectData() {
+    renderLoadingState();
+
+    try {
+      const response = await fetch(API_ENDPOINT, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      // Handle non-2xx HTTP responses
+      if (!response.ok) {
+        let serverErrorMsg = `HTTP Error ${response.status} (${response.statusText || 'Request Failed'})`;
+        try {
+          const errorJson = await response.json();
+          if (errorJson && errorJson.message) {
+            serverErrorMsg = `${serverErrorMsg}: ${errorJson.message}`;
+          }
+        } catch {
+          // Response body was not JSON; keep status text
+        }
+        throw new Error(serverErrorMsg);
+      }
+
+      // Parse JSON payload
+      const data = await response.json();
+
+      // Validate root object and graph array structure
+      if (!data || typeof data !== 'object') {
+        throw new Error('Malformed JSON: Response root is not an object.');
+      }
+
+      if (!Array.isArray(data.graph)) {
+        throw new Error('Invalid Schema: Expected "graph" array was not found in response.');
+      }
+
+      // Filter entities by type === "Project"
+      state.allProjects = data.graph.filter(item => item && item.type === 'Project');
+
+      state.isLoading = false;
+      state.hasError = false;
+
+      // Handle empty graph scenario
+      if (state.allProjects.length === 0) {
+        updateStatistics();
+        renderServerEmptyState();
+        return;
+      }
+
+      // Enable filters and populate dropdowns dynamically
+      toggleFilterControls(true);
+      populateFilterDropdowns();
+      updateStatistics();
+      applyFilters();
+
+    } catch (err) {
+      console.error('GEC Wayanad Portal: Data fetch from api.php failed.', err);
+      renderErrorState(err.message || 'Network error or unreachable PHP service.');
+    }
+  }
+
+  /**
+   * Populate Filter Dropdowns dynamically from fetched Project records
    */
   function populateFilterDropdowns() {
     const domains = new Set();
@@ -259,6 +282,11 @@
       if (proj.department) departments.add(proj.department);
       if (proj.year) years.add(proj.year);
     });
+
+    // Reset dropdowns to initial option
+    DOM.domainFilter.innerHTML = '<option value="all">All Domains</option>';
+    DOM.departmentFilter.innerHTML = '<option value="all">All Departments</option>';
+    DOM.yearFilter.innerHTML = '<option value="all">All Years</option>';
 
     // Populate Domains
     Array.from(domains).sort().forEach(domain => {
@@ -283,6 +311,11 @@
       opt.textContent = year.toString();
       DOM.yearFilter.appendChild(opt);
     });
+
+    // Restore selected values if present in state
+    if (state.activeFilters.domain !== 'all') DOM.domainFilter.value = state.activeFilters.domain;
+    if (state.activeFilters.department !== 'all') DOM.departmentFilter.value = state.activeFilters.department;
+    if (state.activeFilters.year !== 'all') DOM.yearFilter.value = state.activeFilters.year;
   }
 
   /**
@@ -302,13 +335,16 @@
   }
 
   /**
-   * Filter and Sort Projects
+   * Filter and Sort Projects in Memory
+   * Operates on data already fetched from PHP without repeated network calls.
    */
   function applyFilters() {
+    if (state.isLoading || state.hasError) return;
+
     const { search, domain, department, year, status, tech, sort } = state.activeFilters;
     const searchLower = search.trim().toLowerCase();
 
-    // 1. Filtering
+    // 1. Multi-Criteria Filtering
     state.filteredProjects = state.allProjects.filter(project => {
       // Domain filter
       if (domain !== 'all' && project.domain !== domain) {
@@ -326,7 +362,7 @@
       }
 
       // Status filter
-      if (status !== 'all' && project.status.toLowerCase() !== status.toLowerCase()) {
+      if (status !== 'all' && (!project.status || project.status.toLowerCase() !== status.toLowerCase())) {
         return false;
       }
 
@@ -359,13 +395,13 @@
     // 2. Sorting
     state.filteredProjects.sort((a, b) => {
       if (sort === 'year-desc') {
-        return b.year - a.year || a.title.localeCompare(b.title);
+        return (b.year || 0) - (a.year || 0) || (a.title || '').localeCompare(b.title || '');
       } else if (sort === 'year-asc') {
-        return a.year - b.year || a.title.localeCompare(b.title);
+        return (a.year || 0) - (b.year || 0) || (a.title || '').localeCompare(b.title || '');
       } else if (sort === 'title-asc') {
-        return a.title.localeCompare(b.title);
+        return (a.title || '').localeCompare(b.title || '');
       } else if (sort === 'status') {
-        return a.status.localeCompare(b.status);
+        return (a.status || '').localeCompare(b.status || '');
       }
       return 0;
     });
@@ -455,9 +491,9 @@
     const projects = state.filteredProjects;
     DOM.resultsCount.textContent = projects.length;
 
-    // Check for empty state
+    // Check for search empty state
     if (projects.length === 0) {
-      renderEmptyState();
+      renderSearchEmptyState();
       return;
     }
 
@@ -485,7 +521,7 @@
     if (statusLower === 'completed') statusClass = 'status-completed';
     else if (statusLower === 'development') statusClass = 'status-development';
 
-    // Build technology pills HTML
+    // Build technology pills HTML safely
     const techTagsHtml = (project.technologies || [])
       .map(tech => `<button type="button" class="tech-tag" data-tech="${escapeHtml(tech)}">${escapeHtml(tech)}</button>`)
       .join('');
@@ -495,28 +531,28 @@
     card.innerHTML = `
       <div class="card-top">
         <span class="card-id-badge">${escapeHtml(project.id)}</span>
-        <span class="status-badge ${statusClass}">${escapeHtml(project.status)}</span>
+        <span class="status-badge ${statusClass}">${escapeHtml(project.status || 'Active')}</span>
       </div>
 
-      <button type="button" class="card-domain-badge" data-domain="${escapeHtml(project.domain)}" title="Filter by domain ${escapeHtml(project.domain)}">
-        ${escapeHtml(project.domain)}
+      <button type="button" class="card-domain-badge" data-domain="${escapeHtml(project.domain || '')}" title="Filter by domain ${escapeHtml(project.domain || '')}">
+        ${escapeHtml(project.domain || 'General')}
       </button>
 
-      <h3 class="card-title">${escapeHtml(project.title)}</h3>
+      <h3 class="card-title">${escapeHtml(project.title || 'Untitled Project')}</h3>
 
       <div class="card-meta-row">
         <span class="card-meta-item">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
-          ${escapeHtml(project.department)}
+          ${escapeHtml(project.department || 'Engineering')}
         </span>
         <span>•</span>
         <span class="card-meta-item">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-          ${escapeHtml(String(project.year))}
+          ${escapeHtml(String(project.year || ''))}
         </span>
       </div>
 
-      <p class="card-description">${escapeHtml(project.description)}</p>
+      <p class="card-description">${escapeHtml(project.description || '')}</p>
 
       <div class="card-tech-list" aria-label="Technologies used">
         ${techTagsHtml}
@@ -525,7 +561,7 @@
       <div class="card-footer-info">
         <div class="team-guide-info">
           <span>Team: <strong>${teamCount} Student${teamCount !== 1 ? 's' : ''}</strong></span>
-          <span>Guide: <strong>${escapeHtml(project.guide)}</strong></span>
+          <span>Guide: <strong>${escapeHtml(project.guide || 'N/A')}</strong></span>
         </div>
         <button type="button" class="btn-card-details" data-id="${escapeHtml(project.id)}">
           View Details
@@ -565,9 +601,9 @@
   }
 
   /**
-   * Render Empty State when no results match
+   * Render Search Empty State when filter or keyword returns 0 results
    */
-  function renderEmptyState() {
+  function renderSearchEmptyState() {
     const emptyDiv = document.createElement('div');
     emptyDiv.className = 'empty-state';
     emptyDiv.innerHTML = `
@@ -593,21 +629,21 @@
    * Open and Populate Project Details Modal Dialog
    */
   function openProjectModal(project) {
-    DOM.modalProjectId.textContent = project.id;
-    DOM.modalProjectStatus.textContent = project.status;
+    DOM.modalProjectId.textContent = project.id || '';
+    DOM.modalProjectStatus.textContent = project.status || 'Active';
     DOM.modalProjectStatus.className = `status-badge ${
-      project.status.toLowerCase() === 'completed'
+      (project.status || '').toLowerCase() === 'completed'
         ? 'status-completed'
-        : project.status.toLowerCase() === 'development'
+        : (project.status || '').toLowerCase() === 'development'
         ? 'status-development'
         : 'status-prototype'
     }`;
-    DOM.modalProjectTitle.textContent = project.title;
-    DOM.modalProjectDomain.textContent = project.domain;
-    DOM.modalProjectDept.textContent = project.department;
-    DOM.modalProjectYear.textContent = project.year;
-    DOM.modalProjectGuide.textContent = project.guide;
-    DOM.modalProjectDesc.textContent = project.description;
+    DOM.modalProjectTitle.textContent = project.title || '';
+    DOM.modalProjectDomain.textContent = project.domain || '';
+    DOM.modalProjectDept.textContent = project.department || '';
+    DOM.modalProjectYear.textContent = project.year || '';
+    DOM.modalProjectGuide.textContent = project.guide || '';
+    DOM.modalProjectDesc.textContent = project.description || '';
 
     // Render Tech Pills in modal
     DOM.modalProjectTechs.innerHTML = '';
@@ -738,6 +774,7 @@
     // Stat cards interactive filtering
     DOM.statCards.forEach(card => {
       card.addEventListener('click', () => {
+        if (state.isLoading || state.hasError) return;
         if (card.hasAttribute('data-filter')) {
           resetAllFilters();
         } else if (card.hasAttribute('data-filter-status')) {
@@ -824,30 +861,6 @@
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
     }
-  }
-
-  /**
-   * Helper: Non-intrusive Toast Notice
-   */
-  function showToastNotice(message) {
-    const toast = document.createElement('div');
-    toast.className = 'toast-notice';
-    toast.setAttribute('role', 'status');
-    toast.innerHTML = `
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"></circle>
-        <line x1="12" y1="16" x2="12" y2="12"></line>
-        <line x1="12" y1="8" x2="12.01" y2="8"></line>
-      </svg>
-      <span>${escapeHtml(message)}</span>
-    `;
-    document.body.appendChild(toast);
-    setTimeout(() => {
-      toast.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      toast.style.opacity = '0';
-      toast.style.transform = 'translateY(10px)';
-      setTimeout(() => toast.remove(), 500);
-    }, 4000);
   }
 
   /**

@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gecwyd.ac.in/schemas/projectdata.schema.json",
+  "title": "GEC Wayanad Project Data Schema",
+  "description": "Formal JSON Schema Draft 2020-12 specification for validating institutional project records in the GEC Wayanad Project Showcase Portal, aligned with RO-Crate graph metadata structures.",
+  "type": "object",
+  "required": [
+    "graph"
+  ],
+  "properties": {
+    "graph": {
+      "type": "array",
+      "description": "An array of graph entities representing projects and institutional records.",
+      "items": {
+        "$ref": "#/$defs/graphEntity"
+      }
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "graphEntity": {
+      "type": "object",
+      "description": "Base entity structure within the graph array. Every entity must specify a non-empty id and type.",
+      "required": [
+        "id",
+        "type"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Unique non-empty identifier for the entity."
+        },
+        "type": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The entity classification or schema type (e.g., Project, Person, Organization)."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "Project"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "$ref": "#/$defs/projectEntity"
+          }
+        }
+      ]
+    },
+    "projectEntity": {
+      "type": "object",
+      "description": "Detailed validation rules for records where type is Project.",
+      "required": [
+        "id",
+        "type",
+        "title",
+        "domain",
+        "description",
+        "year",
+        "department",
+        "team",
+        "guide",
+        "technologies",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Institutional project identifier (e.g., project-001)."
+        },
+        "type": {
+          "type": "string",
+          "const": "Project",
+          "description": "Must be 'Project'."
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The descriptive title of the project."
+        },
+        "domain": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The technical or academic application domain."
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "A comprehensive summary of the project goals and methodology."
+        },
+        "year": {
+          "type": "integer",
+          "minimum": 2000,
+          "maximum": 2100,
+          "description": "The academic year of submission or prototype development."
+        },
+        "department": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The engineering department under which the project was conducted."
+        },
+        "team": {
+          "type": "array",
+          "description": "An array of student contributor reference IDs.",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "guide": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Reference identifier for the supervising faculty guide."
+        },
+        "technologies": {
+          "type": "array",
+          "description": "An array of technology stacks, libraries, hardware, or tools utilized.",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "Prototype",
+            "Development",
+            "Completed"
+          ],
+          "description": "Current engineering and development status."
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}
