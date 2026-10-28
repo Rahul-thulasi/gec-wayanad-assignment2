@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Government Engineering College Wayanad (GEC Wayanad) - Data-Driven Project Showcase Portal. Explore innovative academic capstone projects, engineering research, and student technological innovations.">
+  <meta name="keywords" content="GEC Wayanad, Government Engineering College Wayanad, Engineering Projects, Capstone, Kerala, KTU, Project Showcase, Student Research">
+  <meta name="author" content="Government Engineering College Wayanad">
+  <title>GEC Wayanad — Data-Driven Project Showcase Portal</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       Site Header & Institutional Branding
+       ========================================================================= -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#home" class="brand-wrapper" aria-label="GEC Wayanad Project Showcase Home">
+        <div class="brand-emblem-container" aria-hidden="true">
+          <img src="logo.png" alt="GEC Wayanad Official College Emblem" class="brand-logo-img">
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">GEC Wayanad</span>
+          <span class="brand-subtitle">Project Showcase Portal</span>
+        </div>
+      </a>
+
+      <!-- Mobile Navigation Hamburger -->
+      <button class="nav-toggle-btn" id="navToggleBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Main Navigation -->
+      <nav class="site-nav" id="siteNav" aria-label="Primary Navigation">
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#statistics" class="nav-link">Statistics</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#about" class="nav-link">About Portal</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li><a href="#projects" class="nav-link nav-cta">Explore Records</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="mainContent">
+
+    <!-- =========================================================================
+         Hero Section
+         ========================================================================= -->
+    <section class="hero-section" id="home">
+      <div class="hero-pattern" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          <span>Institutional Research & Project Registry</span>
+        </div>
+        <h1 class="hero-title">
+          Engineering Solutions for <span class="highlight">Regional & Global</span> Challenges
+        </h1>
+        <p class="hero-subtitle">
+          Welcome to the official Project Showcase Portal of Government Engineering College Wayanad (GEC Wayanad). Explore interdisciplinary engineering initiatives dynamically presented from our structured institutional dataset.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            Explore Projects
+          </a>
+          <a href="#statistics" class="btn btn-outline">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            View Statistics
+          </a>
+        </div>
+        <div class="hero-features">
+          <div class="hero-feature-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Strict JSON-Driven Architecture</span>
+          </div>
+          <div class="hero-feature-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Pure Vanilla JavaScript</span>
+          </div>
+          <div class="hero-feature-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>GitHub Pages Deployment Ready</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Project Statistics Section
+         ========================================================================= -->
+    <section class="stats-section" id="statistics" aria-label="Portal Analytics and Statistics">
+      <div class="container">
+        <div class="stats-grid">
+          
+          <div class="stat-card" data-filter="all" tabindex="0" role="button" aria-label="View all projects">
+            <div class="stat-icon stat-icon-green" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </div>
+            <div class="stat-details">
+              <span class="stat-value" id="statTotalProjects">0</span>
+              <span class="stat-label">Total Projects</span>
+              <span class="stat-hint">Across all batches</span>
+            </div>
+          </div>
+
+          <div class="stat-card" data-filter-domain="" tabindex="0" role="button" aria-label="Browse unique domains">
+            <div class="stat-icon stat-icon-blue" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <div class="stat-details">
+              <span class="stat-value" id="statDomains">0</span>
+              <span class="stat-label">Specialized Domains</span>
+              <span class="stat-hint">Disaster mgmt to AI</span>
+            </div>
+          </div>
+
+          <div class="stat-card" data-filter-status="Completed" tabindex="0" role="button" aria-label="Filter completed projects">
+            <div class="stat-icon stat-icon-purple" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <div class="stat-details">
+              <span class="stat-value" id="statCompleted">0</span>
+              <span class="stat-label">Completed Systems</span>
+              <span class="stat-hint">Click to filter</span>
+            </div>
+          </div>
+
+          <div class="stat-card" data-filter-status="Prototype" tabindex="0" role="button" aria-label="Filter prototype and development projects">
+            <div class="stat-icon stat-icon-amber" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <div class="stat-details">
+              <span class="stat-value" id="statActive">0</span>
+              <span class="stat-label">Active Innovations</span>
+              <span class="stat-hint">Prototype & In-Dev</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Dynamic Project Showcase Section
+         ========================================================================= -->
+    <section class="showcase-section" id="projects" aria-label="Institutional Project Directory">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag">Academic Directory</span>
+          <h2 class="section-title">Institutional Project Showcase</h2>
+          <p class="section-desc">
+            Filter, search, and examine technical capstone projects developed at Government Engineering College Wayanad.
+          </p>
+        </header>
+
+        <!-- Search and Filter Control Panel -->
+        <div class="filter-panel" role="search" aria-label="Filter and Search Projects">
+          
+          <div class="search-bar-row">
+            <div class="search-input-wrapper">
+              <span class="search-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </span>
+              <input 
+                type="text" 
+                id="searchInput" 
+                class="search-input" 
+                placeholder="Search projects by title, description, technology (e.g. IoT, Python), guide, or team..." 
+                aria-label="Search projects by keyword"
+              >
+              <button id="searchClearBtn" class="search-clear-btn" aria-label="Clear search input">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="filters-row">
+            <!-- Domain Filter -->
+            <div class="filter-group">
+              <label for="domainFilter" class="filter-label">Domain</label>
+              <select id="domainFilter" class="select-custom" aria-label="Filter by project domain">
+                <option value="all">All Domains</option>
+              </select>
+            </div>
+
+            <!-- Department Filter -->
+            <div class="filter-group">
+              <label for="departmentFilter" class="filter-label">Department</label>
+              <select id="departmentFilter" class="select-custom" aria-label="Filter by academic department">
+                <option value="all">All Departments</option>
+              </select>
+            </div>
+
+            <!-- Academic Year Filter -->
+            <div class="filter-group">
+              <label for="yearFilter" class="filter-label">Academic Year</label>
+              <select id="yearFilter" class="select-custom" aria-label="Filter by academic year">
+                <option value="all">All Years</option>
+              </select>
+            </div>
+
+            <!-- Project Status Filter -->
+            <div class="filter-group">
+              <label for="statusFilter" class="filter-label">Status</label>
+              <select id="statusFilter" class="select-custom" aria-label="Filter by development status">
+                <option value="all">All Statuses</option>
+                <option value="Prototype">Prototype</option>
+                <option value="Development">Development</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </div>
+
+            <!-- Sort Control -->
+            <div class="filter-group">
+              <label for="sortSelect" class="filter-label">Sort By</label>
+              <select id="sortSelect" class="select-custom" aria-label="Sort projects">
+                <option value="year-desc">Year (Newest First)</option>
+                <option value="year-asc">Year (Oldest First)</option>
+                <option value="title-asc">Title (A-Z)</option>
+                <option value="status">Status</option>
+              </select>
+            </div>
+
+            <!-- Reset Button -->
+            <div class="filter-group filter-actions">
+              <button id="resetFiltersBtn" class="btn btn-secondary" style="width: 100%;" title="Reset all search queries and filters">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                  <path d="M3 3v5h5"></path>
+                </svg>
+                Reset
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Toolbar: Results Counter, Active Filter Badges & Grid/List Toggle -->
+        <div class="results-toolbar">
+          <div class="results-count-text">
+            Showing <strong id="resultsCount">0</strong> of <strong id="totalCount">0</strong> projects
+          </div>
+
+          <div class="active-filters-bar" id="activeFiltersBar" aria-label="Active Filters">
+            <!-- Dynamically injected active filter chips -->
+          </div>
+
+          <div class="view-toggle" role="group" aria-label="View format">
+            <button id="viewGridBtn" class="view-btn active" title="Grid View" aria-pressed="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+            </button>
+            <button id="viewListBtn" class="view-btn" title="List View" aria-pressed="false">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic Project Listing Container (Populated Strictly via JavaScript) -->
+        <div class="project-grid" id="projectGrid" aria-live="polite">
+          <!-- Dynamically inserted project cards -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         About Section
+         ========================================================================= -->
+    <section class="about-section" id="about" aria-label="About the Project Showcase Portal">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-content">
+            <span class="section-tag">Architecture & Objective</span>
+            <h2>Decoupled Data Architecture for Academic Transparency</h2>
+            <p>
+              The <strong>GEC Wayanad Project Showcase Portal</strong> is built to demonstrate modern frontend engineering principles. Developed as an academic assignment, it emphasizes strict architectural decoupling between data storage and presentation.
+            </p>
+            <p>
+              All project records, student team relations, faculty advisors, and technology classifications reside in a standalone, validated JSON dataset (<code>data/projectdata.json</code>). The client application loads, indexes, filters, and renders the UI in real time using native ES6+ JavaScript without reliance on heavy runtime frameworks.
+            </p>
+            <p>
+              This lightweight approach guarantees instantaneous performance, offline functionality, zero vulnerability surface from external dependencies, and complete portability for hosting on static infrastructures like GitHub Pages.
+            </p>
+          </div>
+
+          <div class="about-highlight-box">
+            <h3>Technical Architecture Highlights</h3>
+            <ul class="about-specs-list">
+              <li class="about-specs-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>No Framework Bloat:</strong> Zero external JS dependencies; pure standard HTML5, CSS3, and modern Vanilla JavaScript.</span>
+              </li>
+              <li class="about-specs-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>Strict Separation of Concerns:</strong> 100% of project card elements are dynamically created via DOM manipulation from JSON graph objects.</span>
+              </li>
+              <li class="about-specs-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>Interactive Filtering:</strong> Multi-criterion search matching against title, description, domain, department, technologies, and mentor IDs.</span>
+              </li>
+              <li class="about-specs-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span><strong>Accessibility & Responsiveness:</strong> Mobile-first semantic layout with ARIA landmarks, dialog focus trapping, and keyboard controls.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Contact & Institutional Section
+         ========================================================================= -->
+    <section class="contact-section" id="contact" aria-label="Institutional Information">
+      <div class="container">
+        <div class="contact-card">
+          <div class="contact-info-col">
+            <h3>Government Engineering College Wayanad</h3>
+            <p>
+              Affiliated to APJ Abdul Kalam Technological University (KTU) & approved by AICTE. Managed by the Directorate of Technical Education, Government of Kerala.
+            </p>
+            <address class="contact-address">
+              <strong>Campus Location:</strong>
+              <span>Thalappuzha P.O., Mananthavady</span>
+              <span>Wayanad District, Kerala — 670644, India</span>
+              <span style="margin-top: 0.5rem;"><strong>Website:</strong> <a href="https://gecwyd.ac.in" target="_blank" rel="noopener noreferrer">gecwyd.ac.in</a></span>
+            </address>
+          </div>
+
+          <div class="contact-links-col">
+            <div class="institutional-badge">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              <div>
+                <strong>Academic Assignment</strong>
+                <p style="font-size: 0.8rem; margin: 0; color: var(--text-muted);">Web Technology Showcase Project</p>
+              </div>
+            </div>
+
+            <div class="institutional-badge">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+              <div>
+                <strong>Data Standard</strong>
+                <p style="font-size: 0.8rem; margin: 0; color: var(--text-muted);">Standardized JSON Graph Object Schema</p>
+              </div>
+            </div>
+
+            <div class="institutional-badge">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+              <div>
+                <strong>Deployment Target</strong>
+                <p style="font-size: 0.8rem; margin: 0; color: var(--text-muted);">Static Host Ready (GitHub Pages)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       Project Details Modal Dialog
+       ========================================================================= -->
+  <div class="modal-backdrop" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalProjectTitle" aria-hidden="true">
+    <div class="modal-dialog">
+      <header class="modal-header">
+        <div>
+          <div class="modal-header-meta">
+            <span class="card-id-badge" id="modalProjectId">project-000</span>
+            <span class="status-badge" id="modalProjectStatus">Status</span>
+          </div>
+          <h3 class="modal-title" id="modalProjectTitle">Project Title</h3>
+        </div>
+        <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close project details dialog">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </header>
+
+      <div class="modal-body">
+        <div class="modal-info-grid">
+          <div class="modal-info-item">
+            <span class="modal-info-label">Domain</span>
+            <span class="modal-info-val" id="modalProjectDomain">-</span>
+          </div>
+          <div class="modal-info-item">
+            <span class="modal-info-label">Department</span>
+            <span class="modal-info-val" id="modalProjectDept">-</span>
+          </div>
+          <div class="modal-info-item">
+            <span class="modal-info-label">Academic Year</span>
+            <span class="modal-info-val" id="modalProjectYear">-</span>
+          </div>
+          <div class="modal-info-item">
+            <span class="modal-info-label">Faculty Guide</span>
+            <span class="modal-info-val" id="modalProjectGuide">-</span>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="modal-section-title">Project Overview</h4>
+          <p class="card-description" id="modalProjectDesc" style="font-size: 0.95rem; line-height: 1.65; color: var(--text-secondary);"></p>
+        </div>
+
+        <div>
+          <h4 class="modal-section-title">Technologies & Stacks</h4>
+          <div class="card-tech-list" id="modalProjectTechs"></div>
+        </div>
+
+        <div>
+          <h4 class="modal-section-title">Student Project Team</h4>
+          <div class="modal-team-badges" id="modalProjectTeam"></div>
+        </div>
+      </div>
+
+      <footer class="modal-footer">
+        <span class="modal-footer-note">Institutional Record • GEC Wayanad</span>
+        <button class="btn btn-secondary" id="modalCloseActionBtn" style="padding: 0.45rem 1rem;">Close</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Site Footer
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.85rem;">
+            <img src="logo.png" alt="GEC Wayanad Logo" style="width: 44px; height: 44px; object-fit: contain; border-radius: 8px; background: #ffffff; padding: 3px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+            <h4 style="margin: 0; font-size: 1.15rem; color: #ffffff;">Government Engineering College Wayanad</h4>
+          </div>
+          <p>
+            An institution established under the Directorate of Technical Education, Government of Kerala. Providing quality engineering education and fostering community-centric innovation.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Quick Navigation</h5>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Project Directory</a></li>
+            <li><a href="#statistics">Portal Analytics</a></li>
+            <li><a href="#about">About the Architecture</a></li>
+            <li><a href="#contact">Contact Campus</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Data Architecture</h5>
+          <ul>
+            <li><a href="data/projectdata.json" target="_blank" rel="noopener noreferrer">View Raw JSON Graph</a></li>
+            <li><a href="#about">Vanilla JS Engine</a></li>
+            <li><a href="#about">Decoupled Architecture</a></li>
+            <li><a href="#projects">Dynamic Rendering</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Government Engineering College Wayanad (GEC Wayanad). All rights reserved.</p>
+        <div class="footer-disclaimer">
+          <strong>Academic Assignment Notice:</strong> Developed strictly for educational evaluation. Sample team and guide values represent standardized reference identifiers.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Script -->
+  <script src="js/app.js"></script>
+</body>
+</html>

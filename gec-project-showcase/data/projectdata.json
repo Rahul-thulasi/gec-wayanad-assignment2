@@ -1,0 +1,217 @@
+{
+  "graph": [
+    {
+      "id": "project-001",
+      "type": "Project",
+      "title": "Wayanad Landslide Monitoring System",
+      "domain": "Disaster Management",
+      "description": "A system for monitoring environmental parameters to support early identification of landslide-prone conditions.",
+      "year": 2026,
+      "department": "Computer Science and Engineering",
+      "team": [
+        "student-001",
+        "student-002",
+        "student-003"
+      ],
+      "guide": "faculty-001",
+      "technologies": [
+        "IoT",
+        "Python",
+        "Machine Learning"
+      ],
+      "status": "Prototype"
+    },
+    {
+      "id": "project-002",
+      "type": "Project",
+      "title": "Campus Resource Booking System",
+      "domain": "Web Application",
+      "description": "A web application for booking classrooms, laboratories and other institutional resources.",
+      "year": 2026,
+      "department": "Computer Science and Engineering",
+      "team": [
+        "student-004",
+        "student-005"
+      ],
+      "guide": "faculty-002",
+      "technologies": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "PHP"
+      ],
+      "status": "Development"
+    },
+    {
+      "id": "project-003",
+      "type": "Project",
+      "title": "Smart Agro-Climatic Sensor Network for Wayanad Coffee Plantations",
+      "domain": "Agriculture & IoT",
+      "description": "Demonstration record: Low-power mesh sensor deployment for microclimate tracking, soil moisture profiling, and frost alerts tailored for high-altitude hill agriculture.",
+      "year": 2026,
+      "department": "Electronics and Communication Engineering",
+      "team": [
+        "student-006",
+        "student-007",
+        "student-008"
+      ],
+      "guide": "faculty-003",
+      "technologies": [
+        "LoRaWAN",
+        "Embedded C",
+        "ESP32",
+        "MQTT"
+      ],
+      "status": "Prototype"
+    },
+    {
+      "id": "project-004",
+      "type": "Project",
+      "title": "Kabini River Basin Water Level Early Warning Alert System",
+      "domain": "Disaster Management",
+      "description": "Demonstration record: Ultrasonic depth telemetry combined with predictive hydrological runoff models to warn downstream riverbank communities during peak monsoon.",
+      "year": 2025,
+      "department": "Civil Engineering",
+      "team": [
+        "student-009",
+        "student-010"
+      ],
+      "guide": "faculty-004",
+      "technologies": [
+        "Python",
+        "Telemetry",
+        "GIS Mapping",
+        "GSM Module"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "project-005",
+      "type": "Project",
+      "title": "Malayalam Dialect Speech Recognition for Tribal Health Access",
+      "domain": "Artificial Intelligence",
+      "description": "Demonstration record: Acoustic fine-tuning of automated speech recognition models to transcribe local regional dialects for primary healthcare assistance.",
+      "year": 2026,
+      "department": "Computer Science and Engineering",
+      "team": [
+        "student-011",
+        "student-012",
+        "student-013"
+      ],
+      "guide": "faculty-001",
+      "technologies": [
+        "PyTorch",
+        "Transformers",
+        "Audio Processing",
+        "Flask"
+      ],
+      "status": "Development"
+    },
+    {
+      "id": "project-006",
+      "type": "Project",
+      "title": "Hybrid Solar-Micro-Hydro Campus Energy Management System",
+      "domain": "Renewable Energy",
+      "description": "Demonstration record: Supervisory SCADA controller balancing collegiate rooftop photovoltaic generation and backup storage units with dynamic load shedding.",
+      "year": 2025,
+      "department": "Electrical and Electronics Engineering",
+      "team": [
+        "student-014",
+        "student-015"
+      ],
+      "guide": "faculty-005",
+      "technologies": [
+        "MATLAB/Simulink",
+        "SCADA",
+        "Power Electronics",
+        "Modbus"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "project-007",
+      "type": "Project",
+      "title": "GECW Digital Central Repository & E-Thesis Archive",
+      "domain": "Web Application",
+      "description": "Demonstration record: Open-access academic publication and capstone repository facilitating peer review, plagiarism verification, and institutional indexing.",
+      "year": 2025,
+      "department": "Computer Science and Engineering",
+      "team": [
+        "student-016",
+        "student-017",
+        "student-018"
+      ],
+      "guide": "faculty-002",
+      "technologies": [
+        "JavaScript",
+        "Node.js",
+        "IndexedDB",
+        "REST API"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "project-008",
+      "type": "Project",
+      "title": "Autonomous Forest Trail Inspection Rover for Wildlife Corridors",
+      "domain": "Robotics & Vision",
+      "description": "Demonstration record: Ruggedized tracked chassis navigating rugged terrain with edge computer vision to detect fence breaches and human-wildlife encounters.",
+      "year": 2026,
+      "department": "Mechanical Engineering",
+      "team": [
+        "student-019",
+        "student-020",
+        "student-021"
+      ],
+      "guide": "faculty-006",
+      "technologies": [
+        "ROS2",
+        "OpenCV",
+        "Jetson Nano",
+        "SolidWorks"
+      ],
+      "status": "Prototype"
+    },
+    {
+      "id": "project-009",
+      "type": "Project",
+      "title": "Federated Hospital Record Exchange for District Clinics",
+      "domain": "Information Security",
+      "description": "Demonstration record: Privacy-preserving cryptographically verified ledger mechanism permitting tamper-evident transfer of patient health summaries.",
+      "year": 2024,
+      "department": "Computer Science and Engineering",
+      "team": [
+        "student-022",
+        "student-023"
+      ],
+      "guide": "faculty-007",
+      "technologies": [
+        "Cryptography",
+        "Go",
+        "Docker",
+        "WebSockets"
+      ],
+      "status": "Completed"
+    },
+    {
+      "id": "project-010",
+      "type": "Project",
+      "title": "Smart Rainwater Harvesting & Greywater Recycling Controller",
+      "domain": "Renewable Energy",
+      "description": "Demonstration record: Automated pneumatic multi-stage filtration monitor regulating campus hostel auxiliary water supplies based on meteorological forecast data.",
+      "year": 2024,
+      "department": "Civil Engineering",
+      "team": [
+        "student-024",
+        "student-025"
+      ],
+      "guide": "faculty-004",
+      "technologies": [
+        "Arduino",
+        "Fluid Dynamics",
+        "Turbidity Sensors"
+      ],
+      "status": "Completed"
+    }
+  ]
+}
