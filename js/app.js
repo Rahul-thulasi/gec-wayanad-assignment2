@@ -126,6 +126,8 @@
     DOM.statCompleted.textContent = '0';
     DOM.statActive.textContent = '0';
 
+    const isGitHubPages = window.location.hostname.includes('github.io');
+
     DOM.projectGrid.innerHTML = `
       <div class="error-state" role="alert" aria-live="assertive">
         <div class="error-state-icon" aria-hidden="true">
@@ -137,18 +139,27 @@
         </div>
         <h3 class="error-state-title">Unable to Load Project Records</h3>
         <p class="error-state-desc">
-          The browser encountered an error communicating with the PHP RESTful endpoint (<code>${escapeHtml(API_ENDPOINT)}</code>). 
-          Please verify that the PHP development server is running and the data file is accessible.
+          ${isGitHubPages
+            ? '<strong>Notice:</strong> You are viewing this deployment on GitHub Pages, which only hosts static files and cannot execute server-side PHP scripts (<code>api.php</code>). For full Assignment 2 REST evaluation, run locally with PHP (<code>php -S localhost:8000</code>) or deploy to a PHP host.'
+            : `The browser encountered an error communicating with the PHP RESTful endpoint (<code>${escapeHtml(API_ENDPOINT)}</code>). Please verify that the PHP development server is running and the data file is accessible.`
+          }
         </p>
         <div class="error-details-box">${escapeHtml(errorMessage)}</div>
-        <button type="button" class="btn btn-retry" id="retryFetchBtn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="23 4 23 10 17 10"></polyline>
-            <polyline points="1 20 1 14 7 14"></polyline>
-            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
-          </svg>
-          Retry Request
-        </button>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center;">
+          <button type="button" class="btn btn-retry" id="retryFetchBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 4 23 10 17 10"></polyline>
+              <polyline points="1 20 1 14 7 14"></polyline>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+            </svg>
+            Retry Request (api.php)
+          </button>
+          ${isGitHubPages ? `
+            <button type="button" class="btn btn-secondary" id="previewStaticBtn" style="padding: 0.7rem 1.2rem; font-weight: 600;">
+              Preview Static Dataset (projectdata.json)
+            </button>
+          ` : ''}
+        </div>
       </div>
     `;
 
@@ -156,6 +167,27 @@
     if (retryBtn) {
       retryBtn.addEventListener('click', () => {
         fetchProjectData();
+      });
+    }
+
+    const previewBtn = document.getElementById('previewStaticBtn');
+    if (previewBtn) {
+      previewBtn.addEventListener('click', async () => {
+        renderLoadingState();
+        try {
+          const res = await fetch('./data/projectdata.json');
+          if (!res.ok) throw new Error('Could not load static fallback file.');
+          const json = await res.json();
+          state.allProjects = (json.graph || []).filter(item => item && item.type === 'Project');
+          state.isLoading = false;
+          state.hasError = false;
+          toggleFilterControls(true);
+          populateFilterDropdowns();
+          updateStatistics();
+          applyFilters();
+        } catch (e) {
+          renderErrorState(e.message);
+        }
       });
     }
   }
