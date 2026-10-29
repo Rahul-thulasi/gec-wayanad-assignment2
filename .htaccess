@@ -1,0 +1,16 @@
+# ============================================================================
+# GEC Wayanad — Data-Driven Project Showcase Portal
+# Apache / XAMPP mod_rewrite Configuration
+# ============================================================================
+
+RewriteEngine On
+RewriteBase /
+
+# Route clean REST API endpoints
+RewriteRule ^api/items(?:/(.+))?$ api/items.php?id=$1 [QSA,L]
+RewriteRule ^api/login$ api/login.php [QSA,L]
+RewriteRule ^api/logout$ api/logout.php [QSA,L]
+RewriteRule ^api/session$ api/session.php [QSA,L]
+
+# Prevent directory browsing
+Options -Indexes

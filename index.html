@@ -45,6 +45,37 @@
           <li><a href="#about" class="nav-link">About Portal</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
           <li><a href="#projects" class="nav-link nav-cta">Explore Records</a></li>
+          
+          <!-- Assignment 3: Authentication Controls -->
+          <li class="nav-auth-wrap" id="navAuthWrap">
+            <button type="button" class="btn-nav-auth" id="navLoginBtn" aria-label="Faculty / Admin Login">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              <span>Faculty Login</span>
+            </button>
+            
+            <div id="navAuthUserPanel" style="display: none; align-items: center; gap: 0.4rem;">
+              <span class="nav-user-badge" id="navUserBadge" title="Logged in session">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span id="navUsernameText">admin</span>
+              </span>
+              <button type="button" class="btn-add-record" id="navNewProjectBtn" title="Create a new capstone project record">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>New Project</span>
+              </button>
+              <button type="button" class="btn-nav-logout" id="navLogoutBtn" title="End authenticated PHP session">
+                Logout
+              </button>
+            </div>
+          </li>
         </ul>
       </nav>
     </div>
@@ -88,15 +119,15 @@
         <div class="hero-features">
           <div class="hero-feature-item">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span>PHP RESTful Data Service (api.php)</span>
+            <span>MySQL Relational Backend (gec_assignment3)</span>
           </div>
           <div class="hero-feature-item">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span>JSON Schema (Draft 2020-12) Validated</span>
+            <span>PHP REST API (PDO Prepared Statements)</span>
           </div>
           <div class="hero-feature-item">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span>Vanilla JS Client-Side Rendering</span>
+            <span>Session Auth & Debounced Live Search</span>
           </div>
         </div>
       </div>
@@ -281,6 +312,15 @@
             <!-- Dynamically injected active filter chips -->
           </div>
 
+          <!-- Assignment 3: Toolbar Create Project Action -->
+          <button type="button" class="btn-add-record" id="toolbarAddProjectBtn" style="display: none; margin-right: 0.5rem;" title="Create new project entry">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span>+ Add Project</span>
+          </button>
+
           <div class="view-toggle" role="group" aria-label="View format">
             <button id="viewGridBtn" class="view-btn active" title="Grid View" aria-pressed="true">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -318,40 +358,40 @@
       <div class="container">
         <div class="about-grid">
           <div class="about-content">
-            <span class="section-tag">Assignment 2 • RESTful Architecture</span>
-            <h2>PHP RESTful Data Service & Decoupled Frontend</h2>
+            <span class="section-tag">Assignment 3 • Full-Stack RESTful Architecture</span>
+            <h2>MySQL Relational Database & PHP Session Authentication</h2>
             <p>
-              The <strong>GEC Wayanad Project Showcase Portal</strong> has been enhanced to implement a full-stack RESTful data delivery pipeline in compliance with Assignment 2 specifications.
+              The <strong>GEC Wayanad Project Showcase Portal</strong> has been upgraded to KTU CST463 Assignment 3 specifications, transitioning from static file storage to an enterprise-grade <strong>MySQL-backed relational architecture</strong> with server-side session authentication.
             </p>
             <p>
-              All institutional project records reside in an independent JSON dataset (<code>data/projectdata.json</code>) structured as an RO-Crate-aligned graph, formally validated using JSON Schema Draft 2020-12 (<code>schemas/projectdata.schema.json</code>).
+              Institutional records are structured across normalized relational tables (<code>projects</code>, <code>students</code>, <code>faculty</code>, <code>technologies</code>, <code>project_members</code>, <code>project_technologies</code>, <code>users</code>) within database <code>gec_assignment3</code>. Foreign keys, indexes, and transactions ensure strict referential integrity.
             </p>
             <p>
-              A specialized vanilla PHP endpoint (<code>api.php</code>) serves this data over HTTP using standard REST principles: validating request methods, verifying file permissions, ensuring JSON syntax integrity, setting <code>Content-Type: application/json; charset=utf-8</code>, and returning clean HTTP status codes (200, 404, 405, 500) without rendering any server-side HTML.
+              The PHP REST API (<code>api/items.php</code>) delivers public data retrieval, debounced live search (<code>GET /api/items.php?q=keyword</code>), and authenticated record creation (<code>POST</code>) and modification (<code>PUT</code>) using secure PDO prepared statements, transaction boundaries, and PHP sessions (<code>$_SESSION</code>) with HttpOnly cookies.
             </p>
             <p>
-              On the client side, the native Fetch API requests <code>./api.php</code>, handles loading and error states with an interactive retry mechanism, and performs client-side search, filtering, and modal rendering entirely in memory.
+              The frontend communicates exclusively via asynchronous Fetch API requests without full-page reloads, featuring real-time DOM updates, loading states, and responsive modal dialogs.
             </p>
           </div>
 
           <div class="about-highlight-box">
-            <h3>RESTful Architecture Highlights</h3>
+            <h3>Assignment 3 Architecture Highlights</h3>
             <ul class="about-specs-list">
               <li class="about-specs-item">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span><strong>Linear Data Flow:</strong> <code>projectdata.json</code> → <code>api.php</code> → HTTP JSON Response → JavaScript Fetch API → Dynamic DOM.</span>
+                <span><strong>Relational MySQL Schema:</strong> 3NF normalized tables with foreign key cascades and composite indexes in <code>gec_assignment3</code>.</span>
               </li>
               <li class="about-specs-item">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span><strong>Pure Vanilla PHP Endpoint:</strong> Zero PHP frameworks or Composer dependencies. Strict GET validation, clean error objects, and no HTML output.</span>
+                <span><strong>Secure PDO Layer:</strong> 100% prepared statements preventing SQL injection, UTF-8 character encoding, and sanitized exception handling.</span>
               </li>
               <li class="about-specs-item">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span><strong>Formal Schema Validation:</strong> Governed by JSON Schema Draft 2020-12 with conditional entity evaluation for Project records.</span>
+                <span><strong>Server-Side Live Search:</strong> Debounced live search querying indexed database fields across titles, domains, technologies, and teams.</span>
               </li>
               <li class="about-specs-item">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span><strong>Resilient UX States:</strong> Dedicated visual loading indicators, network failure alerts with instant retry, and client-side empty state handlers.</span>
+                <span><strong>Session Authentication:</strong> Cookie-based authentication protecting POST/PUT mutations with regeneration and HttpOnly flags.</span>
               </li>
             </ul>
           </div>
@@ -529,6 +569,179 @@
       </div>
     </div>
   </footer>
+
+  <!-- =========================================================================
+       Assignment 3: Admin / Faculty Login Modal Dialog
+       ========================================================================= -->
+  <div class="modal-backdrop" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 440px;">
+      <header class="modal-header">
+        <div>
+          <div class="modal-header-meta">
+            <span class="card-id-badge">AUTH SERVICE</span>
+            <span class="status-badge status-completed">PHP SESSION</span>
+          </div>
+          <h3 class="modal-title" id="loginModalTitle">Faculty & Admin Login</h3>
+        </div>
+        <button class="modal-close-btn" id="loginModalCloseBtn" aria-label="Close login dialog">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </header>
+
+      <form id="loginForm" novalidate>
+        <div class="modal-body" style="gap: 1rem;">
+          <div class="alert-banner alert-banner-info" style="font-size: 0.8rem; margin-bottom: 0.5rem;">
+            <div>
+              <strong>Demonstration Credentials (Local Academic Evaluation):</strong><br>
+              Username: <code>admin</code> | Password: <code>admin123</code><br>
+              Username: <code>demo_user</code> | Password: <code>demo_pass</code>
+            </div>
+          </div>
+
+          <div id="loginAlertBox" style="display: none;"></div>
+
+          <div class="form-group">
+            <label for="loginUsername" class="form-label">Username <span class="required-star">*</span></label>
+            <input type="text" id="loginUsername" class="form-input" placeholder="e.g. admin or demo_user" autocomplete="username" required>
+          </div>
+
+          <div class="form-group">
+            <label for="loginPassword" class="form-label">Password <span class="required-star">*</span></label>
+            <input type="password" id="loginPassword" class="form-input" placeholder="Enter demo password" autocomplete="current-password" required>
+          </div>
+        </div>
+
+        <footer class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="loginCancelBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="loginSubmitBtn">
+            <span>Authenticate Session</span>
+          </button>
+        </footer>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Assignment 3: Project Record Create / Edit Modal Dialog
+       ========================================================================= -->
+  <div class="modal-backdrop" id="projectEditModal" role="dialog" aria-modal="true" aria-labelledby="projectEditModalTitle" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 650px;">
+      <header class="modal-header">
+        <div>
+          <div class="modal-header-meta">
+            <span class="card-id-badge" id="editModalBadge">PROJECT FORM</span>
+            <span class="status-badge status-prototype" id="editModalSubBadge">DATABASE OPERATION</span>
+          </div>
+          <h3 class="modal-title" id="projectEditModalTitle">Create Project Record</h3>
+        </div>
+        <button class="modal-close-btn" id="projectEditCloseBtn" aria-label="Close project editor dialog">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </header>
+
+      <form id="projectEditForm" novalidate>
+        <div class="modal-body" style="gap: 0.85rem; max-height: 65vh; overflow-y: auto;">
+          <div id="projectEditAlertBox" style="display: none;"></div>
+
+          <input type="hidden" id="editProjectIdHidden">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="editProjectIdentifier" class="form-label">Project ID</label>
+              <input type="text" id="editProjectIdentifier" class="form-input" placeholder="Auto-generated if empty (e.g. project-011)">
+              <span class="form-help">Leave blank to auto-generate sequentially.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="editProjectStatus" class="form-label">Project Status <span class="required-star">*</span></label>
+              <select id="editProjectStatus" class="form-select" required>
+                <option value="Prototype">Prototype</option>
+                <option value="Development">Development</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="editProjectTitle" class="form-label">Project Title <span class="required-star">*</span></label>
+            <input type="text" id="editProjectTitle" class="form-input" placeholder="e.g. Wayanad Landslide Monitoring System" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="editProjectDomain" class="form-label">Domain <span class="required-star">*</span></label>
+              <input type="text" id="editProjectDomain" class="form-input" placeholder="e.g. Disaster Management" required list="domainsDataList">
+              <datalist id="domainsDataList">
+                <option value="Disaster Management">
+                <option value="Artificial Intelligence">
+                <option value="Web Application">
+                <option value="Agriculture & IoT">
+                <option value="Renewable Energy">
+                <option value="Robotics & Vision">
+                <option value="Information Security">
+              </datalist>
+            </div>
+
+            <div class="form-group">
+              <label for="editProjectDept" class="form-label">Department <span class="required-star">*</span></label>
+              <select id="editProjectDept" class="form-select" required>
+                <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+                <option value="Electronics and Communication Engineering">Electronics and Communication Engineering</option>
+                <option value="Electrical and Electronics Engineering">Electrical and Electronics Engineering</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                <option value="Civil Engineering">Civil Engineering</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="editProjectYear" class="form-label">Academic Year <span class="required-star">*</span></label>
+              <input type="number" id="editProjectYear" class="form-input" min="2000" max="2035" value="2026" required>
+            </div>
+
+            <div class="form-group">
+              <label for="editProjectGuide" class="form-label">Faculty Guide <span class="required-star">*</span></label>
+              <input type="text" id="editProjectGuide" class="form-input" placeholder="e.g. faculty-001 or Dr. Priya Nair" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="editProjectTech" class="form-label">Technologies (Comma-separated)</label>
+            <input type="text" id="editProjectTech" class="form-input" placeholder="e.g. IoT, Python, Machine Learning">
+            <span class="form-help">Separate individual technology stacks with commas.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="editProjectTeam" class="form-label">Student Team Members (Comma-separated)</label>
+            <input type="text" id="editProjectTeam" class="form-input" placeholder="e.g. student-001, student-002">
+            <span class="form-help">Separate student participant identifiers with commas.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="editProjectDesc" class="form-label">Project Description <span class="required-star">*</span></label>
+            <textarea id="editProjectDesc" class="form-textarea" rows="3" placeholder="Provide a concise description of the engineering initiative..." required></textarea>
+          </div>
+        </div>
+
+        <footer class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="projectEditCancelBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="projectEditSaveBtn">
+            <span>Save to MySQL</span>
+          </button>
+        </footer>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container for Asynchronous Feedback -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
 
   <!-- Application Script -->
   <script src="js/app.js"></script>
